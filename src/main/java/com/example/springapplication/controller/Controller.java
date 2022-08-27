@@ -26,5 +26,10 @@ import org.springframework.web.bind.annotation.*;
     public String post(@RequestBody Model model) {
         return "Hello " + model.getFirstName() + " "+  model.getLastName() + "!";
     }
+    @PutMapping("/put/{firstName}")
+    public String put(@PathVariable String firstName,
+                      @RequestParam(value = "lastName") String lastName) {
+        return "Hello " + firstName + " " + lastName + "!";
+    }
     }
 
