@@ -1,12 +1,9 @@
 package com.example.springapplication.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
-    @RestController
+@RestController
     public class Controller {
         @RequestMapping("/api")
         public String Hello() {
@@ -14,8 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
         }
 
         @GetMapping("/query")
-        public String getUsers(@RequestParam(value = "name", defaultValue = "Swatika") String name) {
-            return "Hello! " + name + " From BridgeLabz!!";
+        public String getUsers(@RequestParam(value = "name", defaultValue = "Swatika") String name){
+            return "<h1><font color=blue>Hello! " + name + " From BridgeLabz!!</font></h1>" +
+                    "</br> <font color=green>Passing name as a parameter.</font>";
+        }
+
+        @RequestMapping(value = {"/query/{name}"}, method = RequestMethod.GET)
+        public String greet(@PathVariable String name) {
+            return "<h1><font color=green>Hello! " + name + " From BridgeLabz!!</font></h1>" +
+                    "</br> <font color=purple>Passing name as a path variable.</font>";
         }
     }
 
