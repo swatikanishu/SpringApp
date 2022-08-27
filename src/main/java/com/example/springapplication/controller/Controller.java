@@ -1,5 +1,6 @@
 package com.example.springapplication.controller;
 
+import com.example.springapplication.model.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -21,5 +22,9 @@ import org.springframework.web.bind.annotation.*;
             return "<h1><font color=green>Hello! " + name + " From BridgeLabz!!</font></h1>" +
                     "</br> <font color=purple>Passing name as a path variable.</font>";
         }
+    @PostMapping("/post")
+    public String post(@RequestBody Model model) {
+        return "Hello " + model.getFirstName() + " "+  model.getLastName() + "!";
+    }
     }
 
